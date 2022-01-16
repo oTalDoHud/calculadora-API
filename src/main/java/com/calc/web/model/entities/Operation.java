@@ -1,4 +1,4 @@
-package com.calc.web.model;
+package com.calc.web.model.entities;
 
 import java.io.Serializable;
 

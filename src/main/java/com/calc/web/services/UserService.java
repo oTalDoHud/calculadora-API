@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.calc.web.model.User;
+import com.calc.web.model.entities.User;
 import com.calc.web.repositories.UserRepository;
 
 @Service

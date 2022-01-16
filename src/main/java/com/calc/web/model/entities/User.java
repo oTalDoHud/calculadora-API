@@ -1,4 +1,4 @@
-package com.calc.web.model;
+package com.calc.web.model.entities;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,15 +19,15 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer id;
+	private Integer id;
 	
-	public String name;
+	private String name;
 	
-	public String email;
+	private String email;
 	
-	public String phone;
+	private String phone;
 	
-	public String password;
+	private String password;
 	
 	@OneToMany(mappedBy = "user")
 	@JsonIgnore

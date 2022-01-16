@@ -7,8 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import com.calc.web.model.Operation;
-import com.calc.web.model.User;
+import com.calc.web.model.entities.Operation;
+import com.calc.web.model.entities.User;
 import com.calc.web.repositories.OperationRepository;
 import com.calc.web.repositories.UserRepository;
 
