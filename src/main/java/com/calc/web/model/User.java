@@ -1,11 +1,13 @@
 package com.calc.web.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +26,9 @@ public class User implements Serializable {
 	public String phone;
 	
 	public String password;
+	
+	@OneToMany(mappedBy = "user")
+	private List<Operation> listOp;
 
 	public User() {
 
@@ -84,6 +89,10 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public List<Operation> getListOp() {
+		return listOp;
 	}
 
 	@Override
