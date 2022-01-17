@@ -3,12 +3,16 @@ package com.calc.web.model.entities;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.calc.web.model.entities.enums.MathType;
 
 @Entity
 @Table(name = "TB_Operation")
@@ -23,6 +27,9 @@ public class Operation implements Serializable {
 	
 	private Double number2;
 	
+	@Enumerated(EnumType.STRING)
+	private MathType type;
+	
 	private Double result;
 	
 	@ManyToOne
@@ -33,22 +40,24 @@ public class Operation implements Serializable {
 
 	}
 	
-	public Operation(Double number1, Double number2, Double result,
+	public Operation(Double number1, Double number2, MathType type, 
 			User user) {
 		this.number1 = number1;
 		this.number2 = number2;
-		this.result = result;
+		this.type = type;
 		this.user = user;
+		setResult();
 	}
 	
 	public Operation(Integer id, Double number1, Double number2, 
-			Double result, User user) {
+			MathType type, User user) {
 		super();
 		this.id = id;
 		this.number1 = number1;
 		this.number2 = number2;
-		this.result = result;
+		this.type = type;
 		this.user = user;
+		setResult();
 	}
 
 	public Integer getId() {
@@ -75,12 +84,34 @@ public class Operation implements Serializable {
 		this.number2 = number2;
 	}
 
+	public MathType getType() {
+		return type;
+	}
+
+	public void setType(MathType type) {
+		this.type = type;
+	}
+
 	public Double getResult() {
 		return result;
 	}
 
-	public void setResult(Double result) {
-		this.result = result;
+	public void setResult() {
+		if (type == MathType.SUM) {
+			this.result = number1 + number2;
+		}
+		else if (type == MathType.SUBTRACTION) {
+			this.result = number1 - number2;
+		}
+		else if (type == MathType.MULTIPLICATION) {
+			this.result = number1 * number2;
+		}
+		else if (type == MathType.DIVISION) {
+			this.result = number1 / number2;
+		}
+//		else {
+//			this.result = 125.99;
+//		}
 	}
 
 	public User getUser() {

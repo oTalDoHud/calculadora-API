@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Profile;
 
 import com.calc.web.model.entities.Operation;
 import com.calc.web.model.entities.User;
+import com.calc.web.model.entities.enums.MathType;
 import com.calc.web.repositories.OperationRepository;
 import com.calc.web.repositories.UserRepository;
 
@@ -36,13 +37,13 @@ public class TestConfig implements CommandLineRunner {
 		
 		userRepo.saveAll(Arrays.asList(hud, ka, isra));
 		
-		Operation op1 = new Operation(22.0, 25.3, 47.3, isra);
+		Operation op1 = new Operation(22.0, 25.3, MathType.MULTIPLICATION, isra);
 		
-		Operation op2 = new Operation(22.0, 25.3, 47.3, hud);
+		Operation op2 = new Operation(22.0, 25.3, MathType.SUM, hud);
 		
-		Operation op3 = new Operation(22.0, 25.3, 47.3, ka);
+		Operation op3 = new Operation(22.0, 25.3,MathType.SUBTRACTION, ka);
 		
-		Operation op4 = new Operation(22.0, 25.3, 47.3, hud);
+		Operation op4 = new Operation(22.0, 25.3, MathType.DIVISION, hud);
 		
 		opRepo.saveAll(Arrays.asList(op1, op2, op3, op4));
 	}
