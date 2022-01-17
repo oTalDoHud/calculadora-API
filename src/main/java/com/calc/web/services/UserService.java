@@ -25,4 +25,11 @@ public class UserService {
 		Pageable page = PageRequest.of(0, 100);
 		return userRepo.findAll(page);
 	}
+	
+	public Iterable<User> findAll(int pag, int size){
+		if (size >= 100) size = 100;
+		
+		Pageable page = PageRequest.of(pag, size);
+		return userRepo.findAll(page);
+	}
 }

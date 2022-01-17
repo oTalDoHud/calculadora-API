@@ -23,4 +23,10 @@ public class UserController {
 	public Iterable<User> findAll() {
 		return service.findAll();
 	}
+	
+	@GetMapping(path = "/users/pag/{pag}/size/{size}")
+	public Iterable<User> findAll(@PathVariable int pag,
+			@PathVariable int size) {
+		return service.findAll(pag, size);
+	}
 }

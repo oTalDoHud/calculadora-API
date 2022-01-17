@@ -25,4 +25,11 @@ public class OperationService {
 		Pageable page = PageRequest.of(0, 100);
 		return opRepo.findAll(page);
 	}
+	
+	public Iterable<Operation> findAll(int pag, int size){
+		if (size >= 100) size = 100;
+		
+		Pageable page = PageRequest.of(pag, size);
+		return opRepo.findAll(page);
+	}
 }

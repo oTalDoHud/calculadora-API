@@ -24,4 +24,9 @@ public class OperationController {
 		return service.findAll();
 	}
 	
+	@GetMapping(path = "/ops/pag/{pag}/size/{size}")
+	public Iterable<Operation> findAll(@PathVariable int pag,
+			@PathVariable int size) {
+		return service.findAll(pag, size);
+	}
 }
