@@ -18,4 +18,10 @@ public class OperationController {
 	public Operation findById(@PathVariable Integer id) {
 		return service.findById(id);
 	}
+	
+	@GetMapping(path = "/ops")
+	public Iterable<Operation> findAll() {
+		return service.findAll();
+	}
+	
 }

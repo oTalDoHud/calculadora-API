@@ -18,4 +18,9 @@ public class UserController {
 	public User findById(@PathVariable Integer id) {
 		return service.findById(id);
 	}
+	
+	@GetMapping(path = "/users")
+	public Iterable<User> findAll() {
+		return service.findAll();
+	}
 }
